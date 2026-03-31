@@ -1,0 +1,17 @@
+{
+  "name": "get-qzone-history",
+  "version": "1.0.0",
+  "description": "获取QQ空间历史说说并生成本地可浏览网页",
+  "main": "get_qzone_history_browser.js",
+  "scripts": {
+    "start": "node get_qzone_history_browser.js",
+    "start:mobile": "node get_qzone_history_browser.js --mobile"
+  },
+  "keywords": ["qzone", "qq", "history", "export", "crawler"],
+  "author": "Christina-zhou",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.40.0",
+    "xlsx": "^0.18.5"
+  }
+}
